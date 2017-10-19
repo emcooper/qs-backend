@@ -5,6 +5,8 @@ const environment = process.env.NODE_ENV || 'test';
 const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
 const Meal = require('../lib/models/meal')
+var pry = require('pryjs');
+
 
 describe('Server', function() {
   before(function(done){

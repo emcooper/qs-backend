@@ -17,4 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 module.exports = app
 
+if(!module.parent) {
+  app.listen(app.get('port'), function() {
+    console.log(app.locals.title + " is running on " + app.get('port') + ".")
+  })
+}
+
 app.get('/api/v1/meals', Meals.getMeals)
