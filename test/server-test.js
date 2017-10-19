@@ -25,9 +25,6 @@ describe('Server', function() {
     assert(app);
   });
 
-
-
-
   describe('GET /meals', function(){
     beforeEach((done) => {
       Meal.create("Breakfast")
@@ -38,7 +35,7 @@ describe('Server', function() {
       .then(() => done())
     })
     it('should return a 200', function(done){
-      this.request.get('/meals', function(error, response){
+      this.request.get('/api/v1/meals', function(error, response){
         if (error) { done(error) }
         assert.equal(response.statusCode, 200)
         done()
