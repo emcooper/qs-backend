@@ -43,7 +43,7 @@ describe('Server', function() {
     })
 
     it('should respond with the meal names', function(done){
-      this.request.get('/meals', function(error, response){
+      this.request.get('/api/v1/meals', function(error, response){
         if (error) { done(error) }
         assert.include(response.body, "Breakfast")
         done()
