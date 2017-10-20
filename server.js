@@ -7,6 +7,13 @@ const database = require('knex')(configuration);
 const Meal = require('./lib/models/meal')
 const Meals = require('./lib/controllers/meals')
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "POST, PATCH, GET, DELETE, OPTIONS")
+  next();
+});
+
 app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Quantified Self'
 app.locals.secrets = {
@@ -28,10 +35,3 @@ if(!module.parent) {
     console.log(app.locals.title + " is running on " + app.get('port') + ".")
   })
 }
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "POST, PATCH, GET, DELETE, OPTIONS")
-  next();
-});
