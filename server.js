@@ -19,6 +19,8 @@ module.exports = app
 
 app.get('/api/v1/meals', Meals.getMeals)
 app.get('/api/v1/meals/:meal_id/foods', Meals.getMeal)
+app.post('/api/v1/meals/:meal_id/foods/:food_id', Meals.postMealFood)
+app.delete('/api/v1/meals/:meal_id/foods/:food_id', Meals.deleteMealFood)
 
 
 if(!module.parent) {
