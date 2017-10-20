@@ -6,6 +6,7 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 const Meal = require('./lib/models/meal')
 const Meals = require('./lib/controllers/meals')
+const Foods = require('./lib/controllers/foods')
 
 app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Quantified Self'
@@ -22,6 +23,11 @@ app.get('/api/v1/meals/:meal_id/foods', Meals.getMeal)
 app.post('/api/v1/meals/:meal_id/foods/:food_id', Meals.postMealFood)
 app.delete('/api/v1/meals/:meal_id/foods/:food_id', Meals.deleteMealFood)
 
+app.get('/api/v1/foods', Foods.getFoods)
+app.get('/api/v1/foods/:id', Foods.getFood)
+app.post('/api/v1/foods', Foods.postFood)
+app.put('/api/v1/foods/:id', Foods.patchFood)
+app.delete('/api/v1/foods/:id', Foods.deleteFood)
 
 if(!module.parent) {
   app.listen(app.get('port'), function() {
