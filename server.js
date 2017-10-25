@@ -26,7 +26,7 @@ app.delete('/api/v1/meals/:meal_id/foods/:food_id', Meals.deleteMealFood)
 app.get('/api/v1/foods', Foods.getFoods)
 app.get('/api/v1/foods/:id', Foods.getFood)
 app.post('/api/v1/foods', Foods.postFood)
-app.put('/api/v1/foods/:id', Foods.patchFood)
+app.patch('/api/v1/foods/:id', Foods.patchFood)
 app.delete('/api/v1/foods/:id', Foods.deleteFood)
 
 if(!module.parent) {
